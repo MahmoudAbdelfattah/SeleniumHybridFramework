@@ -31,7 +31,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						<!-- TestNG suite XML files -->
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>${testNGSuite}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -106,4 +106,47 @@
     
     
   </dependencies>
+  
+  <profiles>
+  
+  <profile>
+			<id>Smoke</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>Smoke</value>
+				</property>
+			</activation>
+			<properties>
+				<testNGSuite>SmokeTestCases.xml</testNGSuite>
+			</properties>
+		</profile>
+		<profile>
+			<id>regression</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>regression</value>
+				</property>
+			</activation>
+			<properties>
+				<testNGSuite>RegressionTestCases.xml</testNGSuite>
+			</properties>
+		</profile>
+		<profile>
+			<id>full</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>environment</name>
+					<value>full</value>
+				</property>
+			</activation>
+			<properties>
+				<testNGSuite>testng.xml</testNGSuite>
+			</properties>
+		</profile>
+	</profiles>
 </project>
